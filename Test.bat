@@ -11,3 +11,7 @@ python Task.py Test_4.txt
 python Task.py Test_5.txt
 
 python Task.py Test_6.txt
+
+python Task.py Test_7.txt
+
+python Task.py Test_8.txt

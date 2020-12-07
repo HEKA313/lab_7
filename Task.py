@@ -33,7 +33,7 @@ def read_data_from_file():
 	# c, d = 10, 11
 	# p = 6
 
-	return a, num, c, d, p
+	return a, num, c, d, p, row, col
 
 
 def matrix_output(a):
@@ -66,7 +66,7 @@ def element_position_bigger_than_p(row, p):
 			return i
 
 
-array, NUM, C, D, P = read_data_from_file()
+array, NUM, C, D, P, ROW, COL = read_data_from_file()
 
 print('Веденная матрица:')
 matrix_output(array)
@@ -79,5 +79,5 @@ for i, row in enumerate(array):
 		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(C, D, min_in_the_segment(array[i + 1], C, D, P)))
 		break
 	elif element_position_bigger_than_p(array[i + 1], P) is not None:
-		print("Позиция элемента большего, чем P, равна: {}\n".format(element_position_bigger_than_p(array[i + 1], P) + (i + 1) * 5 + 1))
+		print("Позиция элемента большего, чем P, равна: {}\n".format(element_position_bigger_than_p(array[i + 1], P) + (i + 1) * COL + 1))
 		break
