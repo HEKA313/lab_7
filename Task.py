@@ -27,30 +27,24 @@ def read_data_from_file():
 	p = int(file.readline())  # Ввод числа P
 	print("Число P равно: {}".format(p))
 
-	# row, col = 4, 5
-	# a = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]]
-	# num = 5
-	# c, d = 10, 11
-	# p = 6
-
-	return a, num, c, d, p, row, col
+	return a, num, c, d, p, row, col  # Возврат значений в головной модуль
 
 
-def matrix_output(a):
+def matrix_output(a):  # Подпрограмма вывода матрицы
 	for row in a:
 		for col in row:
 			print("%3d" % col, end=' ')
 		print()
 
 
-def even_row_in_matrix(row, n):
+def even_row_in_matrix(row, n):  # Подпрограмма нахождения элемента равного num
 	for elem in row:
 		if elem == n:
 			return True
 	return False
 
 
-def min_in_the_segment(row, c, d, p):
+def min_in_the_segment(row, c, d, p):  # Подпрограмма проверки условия [C, D]
 	num = None
 	min = d + 1
 	for elem in row:
@@ -60,23 +54,23 @@ def min_in_the_segment(row, c, d, p):
 		return num
 
 
-def element_position_bigger_than_p(row, p):
+def element_position_bigger_than_p(row, p):  # Подпрограмма нахождения числа большего P
 	for i, elem in enumerate(row):
 		if elem > p:
 			return i
 
 
-array, NUM, C, D, P, ROW, COL = read_data_from_file()
+array, NUM, C, D, P, ROW, COL = read_data_from_file()  # Присваивание констант
 
 print('Веденная матрица:')
-matrix_output(array)
+matrix_output(array)  # Вывод матрицы
 
-for i, row in enumerate(array):
-	if i % 2 == 0 and even_row_in_matrix(row, NUM) and i < len(array) - 1:
-		num = min_in_the_segment(array[i + 1], C, D, P)
-		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(C, D, num))
-		break
-	elif element_position_bigger_than_p(array[i + 1], P) is not None:
-		num = element_position_bigger_than_p(array[i + 1], P)
-		print("Позиция элемента большего, чем P, равна: {}\n".format(num + (i + 1) * COL + 1))
-		break
+for i, row in enumerate(array):  # Основной цикл
+	if i % 2 == 0 and even_row_in_matrix(row, NUM) and i < len(array) - 1:  # Условие проверки выполнения первого условия
+		num = min_in_the_segment(array[i + 1], C, D, P)  # Присваивание значения подпрограммы [C, D]
+		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(C, D, num))  # Вывод выходных данных
+		break  # Выход из цикла
+	elif element_position_bigger_than_p(array[i + 1], P) is not None:  # Если условие не выполняется
+		num = element_position_bigger_than_p(array[i + 1], P)  # Присваивания значения подпрограммы > P
+		print("Позиция элемента большего, чем P, равна: {}\n".format(num + (i + 1) * COL + 1))  # Вывод выходных данных
+		break  # Выход из цикла
