@@ -71,13 +71,12 @@ array, NUM, C, D, P, ROW, COL = read_data_from_file()
 print('Веденная матрица:')
 matrix_output(array)
 
-str = ''
-num = 0
-
 for i, row in enumerate(array):
 	if i % 2 == 0 and even_row_in_matrix(row, NUM) and i < len(array) - 1:
-		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(C, D, min_in_the_segment(array[i + 1], C, D, P)))
+		num = min_in_the_segment(array[i + 1], C, D, P)
+		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(C, D, num))
 		break
 	elif element_position_bigger_than_p(array[i + 1], P) is not None:
-		print("Позиция элемента большего, чем P, равна: {}\n".format(element_position_bigger_than_p(array[i + 1], P) + (i + 1) * COL + 1))
+		num = element_position_bigger_than_p(array[i + 1], P)
+		print("Позиция элемента большего, чем P, равна: {}\n".format(num + (i + 1) * COL + 1))
 		break
