@@ -1,3 +1,9 @@
 @Echo off
+
 python Task.py Test_1.txt
-pause
+
+python Task.py Test_2.txt
+
+python Task.py Test_3.txt
+
+python Task.py Test_4.txt
