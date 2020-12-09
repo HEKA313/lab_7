@@ -60,17 +60,19 @@ def element_position_bigger_than_p(row, p):  # Подпрограмма нахо
 			return i
 
 
-array, NUM, C, D, P, ROW, COL = read_data_from_file()  # Присваивание констант
+array, num, c, d, p, row, col = read_data_from_file()  # Присваивание констант
 
 print('Веденная матрица:')
 matrix_output(array)  # Вывод матрицы
 
 for i, row in enumerate(array):  # Основной цикл
-	if i % 2 == 0 and even_row_in_matrix(row, NUM) and i < len(array) - 1:  # Условие проверки выполнения первого условия
-		num = min_in_the_segment(array[i + 1], C, D, P)  # Присваивание значения подпрограммы [C, D]
-		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(C, D, num))  # Вывод выходных данных
+	if i % 2 == 0 and even_row_in_matrix(row, num) and i < len(array) - 1:  # Условие проверки выполнения первого условия
+		num2 = min_in_the_segment(array[i + 1], c, d, p)  # Присваивание значения подпрограммы [C, D]
+		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(c, d, num2))  # Вывод выходных данных
 		break  # Выход из цикла
-	elif element_position_bigger_than_p(array[i + 1], P) is not None:  # Если условие не выполняется
-		num = element_position_bigger_than_p(array[i + 1], P)  # Присваивания значения подпрограммы > P
-		print("Позиция элемента большего, чем P, равна: {}\n".format(num + (i + 1) * COL + 1))  # Вывод выходных данных
+	elif element_position_bigger_than_p(array[i + 1], p) is not None:  # Если условие не выполняется
+		num2 = element_position_bigger_than_p(array[i + 1], p)  # Присваивания значения подпрограммы > P
+		print("Позиция элемента большего, чем P, равна: {}\n".format(num2 + (i + 1) * col + 1))  # Вывод выходных данных
 		break  # Выход из цикла
+
+# блока схема изменить
