@@ -68,7 +68,7 @@ print('Веденная матрица:')
 matrix_output(array)  # Вывод матрицы
 
 for i in range(row):  # Основной цикл
-	if i % 2 == 0 and even_row_in_matrix(array[i], num) and i < len(array) - 1:  # Условие проверки выполнения первого условия
+	if i % 2 == 0 and even_row_in_matrix(array[i], num) and i < row	:  # Условие проверки выполнения первого условия
 		num2 = min_in_the_segment(array[i + 1], c, d)  # Присваивание значения подпрограммы [C, D]
 		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(c, d, num2))  # Вывод выходных данных
 		break  # Выход из цикла
@@ -76,5 +76,3 @@ for i in range(row):  # Основной цикл
 		num2 = element_position_bigger_than_p(array[i + 1], p)  # Присваивания значения подпрограммы > P
 		print("Позиция элемента большего, чем P, равна: {}\n".format(num2 + (i + 1) * col + 1))  # Вывод выходных данных
 		break  # Выход из цикла
-
-# блока схема изменить
