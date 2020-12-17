@@ -40,10 +40,14 @@ def matrix_output(a):  # Подпрограмма вывода матрицы
 
 
 def even_row_in_matrix(line, n):  # Подпрограмма нахождения элемента равного num
+	check = False
 	for i in range(row):
 		if line[i] == n:
-			return True
-	return False
+			check = True
+			break
+		else:
+			check = False
+	return check
 
 
 def min_in_the_segment(line, c, d):  # Подпрограмма проверки условия [C, D]
@@ -68,7 +72,7 @@ print('Веденная матрица:')
 matrix_output(array)  # Вывод матрицы
 
 for i in range(row):  # Основной цикл
-	if i % 2 == 0 and even_row_in_matrix(array[i], num) and i < row	:  # Условие проверки выполнения первого условия
+	if i % 2 == 0 and even_row_in_matrix(array[i], num) and i < row:  # Условие проверки выполнения первого условия
 		num2 = min_in_the_segment(array[i + 1], c, d)  # Присваивание значения подпрограммы [C, D]
 		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(c, d, num2))  # Вывод выходных данных
 		break  # Выход из цикла
