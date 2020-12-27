@@ -10,12 +10,16 @@ def read_data_from_file():
 
 	print("Количество строк равно: {}\nКоличество столбцов равно: {}".format(row, col))
 
-	a = [[0] * col for i in range(row)]  # инициализация массива
+	a = [0] * col
+	a[len(a) - 1] = [0] * col
+
+	for i in range(row):
+		a[i] = [0] * col
 
 	for i in range(row):  # Ввод массива
-		_ = file.readline().split()
+		line = file.readline().split()
 		for j in range(col):
-			a[i][j] = int(_[j])
+			a[i][j] = int(line[j])
 
 	num = int(file.readline())  # Ввод заданного числа
 
