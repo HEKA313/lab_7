@@ -55,19 +55,22 @@ def even_row_in_matrix(line, n):  # Подпрограмма нахождени�
 
 
 def min_in_the_segment(line, c, d):  # Подпрограмма проверки условия [C, D]
-	num = None
+	num = -1001
 	min = d + 1
 	for i in range(row):
 		if line[i] < min and c <= line[i] <= d:
 			num = min = line[i]
-	if num is not None:
-		return num
+	return num
 
 
 def element_position_bigger_than_p(line, p):  # Подпрограмма нахождения числа большего P
+	check = False
 	for i in range(row):
 		if line[i] > p:
-			return i
+			check = True
+			break
+	if check:
+		return i
 
 
 array, num, c, d, p, row, col = read_data_from_file()  # Присваивание констант
@@ -75,12 +78,22 @@ array, num, c, d, p, row, col = read_data_from_file()  # Присваивани�
 print('Веденная матрица:')
 matrix_output(array)  # Вывод матрицы
 
-for i in range(row):  # Основной цикл
-	if i % 2 == 0 and even_row_in_matrix(array[i], num) and i < row:  # Условие проверки выполнения первого условия
+check = False
+
+for i in range(0, row - 1, 2):  # Основной цикл
+	func_bigger_p = element_position_bigger_than_p(array[i + 1], p)
+	if even_row_in_matrix(array[i], num) and i < row:  # Условие проверки выполнения первого условия
 		num2 = min_in_the_segment(array[i + 1], c, d)  # Присваивание значения подпрограммы [C, D]
 		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(c, d, num2))  # Вывод выходных данных
+		check = True
 		break  # Выход из цикла
-	elif element_position_bigger_than_p(array[i + 1], p) is not None:  # Если условие не выполняется
-		num2 = element_position_bigger_than_p(array[i + 1], p)  # Присваивания значения подпрограммы > P
+	elif func_bigger_p != -1001:  # Если условие не выполняется
+		num2 = func_bigger_p  # Присваивания значения подпрограммы > P
 		print("Позиция элемента большего, чем P, равна: {}\n".format(num2 + (i + 1) * col + 1))  # Вывод выходных данных
+		check = True
 		break  # Выход из цикла
+	else:
+		check = False
+
+if not check:
+	print("Ни одно из условий ни разу не выполнилось!\n")
