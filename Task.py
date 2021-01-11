@@ -54,7 +54,7 @@ def even_row_in_matrix(line, n):  # Подпрограмма нахождени�
 
 
 def min_in_the_segment(line, c, d):  # Подпрограмма проверки условия [C, D]
-	num = -1001
+	num = -1
 	min = d + 1
 	for i in range(row):
 		if line[i] < min and c <= line[i] <= d:
@@ -87,7 +87,7 @@ while not check and i < row - 2:
 		num2 = min_in_the_segment(array[i + 1], c, d)  # Присваивание значения подпрограммы [C, D]
 		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(c, d, num2))  # Вывод выходных данных
 		check = True
-	elif func_bigger_p != -1001:
+	elif func_bigger_p != -1:
 		num2 = func_bigger_p
 		print("Позиция элемента большего, чем P, равна: {}\n".format(num2 + (i + 1) * col + 1))  # Вывод выходных данных
 		check = True
