@@ -87,7 +87,7 @@ while not check and i < row - 2:
 		num2 = min_in_the_segment(array[i + 1], c, d)  # Присваивание значения подпрограммы [C, D]
 		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(c, d, num2))  # Вывод выходных данных
 		check = True
-	elif func_bigger_p != -1:
+	elif func_bigger_p:
 		num2 = func_bigger_p
 		print("Позиция элемента большего, чем P, равна: {}\n".format(num2 + (i + 1) * col + 1))  # Вывод выходных данных
 		check = True
