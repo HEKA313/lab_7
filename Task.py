@@ -70,7 +70,7 @@ def element_position_bigger_than_p(line, p):  # Подпрограмма нах�
 			check = True
 		i += 1
 
-	return i
+	return check, i
 
 
 array, num, c, d, p, row, col = read_data_from_file()  # Присваивание констант
@@ -82,12 +82,12 @@ check = False
 i = 0
 
 while not check and i < row - 2:
-	func_bigger_p = element_position_bigger_than_p(array[i + 1], p)
+	flg, func_bigger_p = element_position_bigger_than_p(array[i + 1], p)
 	if even_row_in_matrix(array[i], num):  # Условие проверки выполнения первого условия
 		num2 = min_in_the_segment(array[i + 1], c, d)  # Присваивание значения подпрограммы [C, D]
 		print("Элемент, значение которого попадает в отрезок [{}, {}], равен: {}\n".format(c, d, num2))  # Вывод выходных данных
 		check = True
-	elif func_bigger_p:
+	elif flg:
 		num2 = func_bigger_p
 		print("Позиция элемента большего, чем P, равна: {}\n".format(num2 + (i + 1) * col + 1))  # Вывод выходных данных
 		check = True
