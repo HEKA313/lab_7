@@ -54,12 +54,11 @@ def even_row_in_matrix(line, n):  # Подпрограмма нахождени�
 
 
 def min_in_the_segment(line, c, d):  # Подпрограмма проверки условия [C, D]
-	num = -1
-	min = d + 1
+	min = line[0]
 	for i in range(row):
 		if line[i] < min and c <= line[i] <= d:
-			num = min = line[i]
-	return num
+			min = line[i]
+	return min
 
 
 def element_position_bigger_than_p(line, p):  # Подпрограмма нахождения числа большего P
