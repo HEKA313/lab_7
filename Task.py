@@ -57,9 +57,12 @@ def min_in_the_segment(line, c, d):  # Подпрограмма проверки
 	check = False
 	min = line[0]
 	for i in range(row):
-		if line[i] < min and c <= line[i] <= d:
-			min = line[i]
-			check = True
+		if c <= line[i] <= d:
+			if not check:
+				min = line[i]
+				flg = True
+			elif line[i] < min:
+				min = line[i]
 	return check, min
 
 
